@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+/* ── Custom Fonts ── */
+@font-face {
+  font-family: "Cafe24Dongdong";
+  src: url("/fonts/Cafe24Dongdong-v2.0.woff2") format("woff2"),
+    url("/fonts/Cafe24Dongdong-v2.0.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MomoSignature";
+  src: url("/fonts/MomoSignature-Regular.woff2") format("woff2"),
+    url("/fonts/MomoSignature-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nighthawk";
+  src: url("/fonts/Nighthawk.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Theme ── */
+@theme {
+  --color-orchid: #631D76;
+  --color-orchid-light: #7a3490;
+  --color-orchid-dark: #4a1559;
+  --color-plum: #FFAAEA;
+  --color-plum-light: #ffc8f0;
+  --color-plum-dark: #e88fd0;
+  --color-powder: #98C1D9;
+  --color-powder-light: #b5d4e6;
+  --color-powder-dark: #7daec9;
+  --color-saffron: #EAC435;
+  --color-saffron-light: #f0d460;
+  --color-saffron-dark: #d4b020;
+  --color-tomato: #FB4D3D;
+  --color-tomato-light: #fc7568;
+  --color-tomato-dark: #e03525;
+
+  --font-display: "Cafe24Dongdong", cursive;
+  --font-signature: "MomoSignature", cursive;
+  --font-heading: "Nighthawk", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base ── */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  @apply bg-[#0e0b16] text-white antialiased font-sans;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0e0b16;
+}
+::-webkit-scrollbar-thumb {
+  background: #631D76;
+  border-radius: 3px;
+}
+
+/* Selection */
+::selection {
+  background: #631D76;
+  color: #FFAAEA;
+}
+
+/* Animated gradient text */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-text {
+  background-size: 200% 200%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(99, 29, 118, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(99, 29, 118, 0.5), 0 0 80px rgba(255, 170, 234, 0.15); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Shimmer effect for borders */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,170,234,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── GPU-friendly CSS animations (compositor thread) ── */
+@keyframes float-up {
+  0% {
+    transform: translateY(105vh) scale(0.6);
+    opacity: 0;
+  }
+  10% { opacity: 0.35; }
+  50% { opacity: 0.35; }
+  80% { opacity: 0.15; }
+  100% {
+    transform: translateY(-10vh) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.85;
+  }
+}
+
+@keyframes orbit-slow {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(35px, 25px); }
+  50%  { transform: translate(-12px, 50px); }
+  75%  { transform: translate(20px, 12px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes aurora-drift {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50%      { opacity: 0.6;  transform: translateY(80px); }
+}
+
+/* ── 3D Card Utilities ── */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* ── Glassmorphic Card Hover ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(99, 29, 118, 0.35);
+  box-shadow: 0 8px 32px rgba(99, 29, 118, 0.15), 0 0 0 1px rgba(255, 170, 234, 0.05);
+  transform: translateY(-2px);
+}
+
+/* ── Animated Ring Pulse for Love Meter ── */
+@keyframes ring-pulse {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(255,170,234,0.4)); }
+  50% { filter: drop-shadow(0 0 18px rgba(255,170,234,0.7)); }
+}
+.animate-ring-pulse {
+  animation: ring-pulse 2s ease-in-out infinite;
+}
+
+/* ── Glowing Text ── */
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(255,170,234,0.3); }
+  50% { text-shadow: 0 0 20px rgba(255,170,234,0.6), 0 0 40px rgba(99,29,118,0.3); }
+}
+.animate-text-glow {
+  animation: text-glow 3s ease-in-out infinite;
+}
+
+/* ── Gradient Border Spin ── */
+@keyframes border-spin {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* ── Typewriter cursor blink ── */
+@keyframes blink-cursor {
+  0%, 100% { border-color: rgba(255,170,234,0.8); }
+  50% { border-color: transparent; }
+}
+.animate-blink-cursor {
+  border-right: 2px solid rgba(255,170,234,0.8);
+  animation: blink-cursor 0.8s step-end infinite;
+}
+
+/* ── Smooth entrance for sections ── */
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Enhanced scrollbar glow ── */
+::-webkit-scrollbar-thumb:hover {
+  background: #FFAAEA;
+  box-shadow: 0 0 10px rgba(255,170,234,0.5);
+}
+
+/* ── Slow spin ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}

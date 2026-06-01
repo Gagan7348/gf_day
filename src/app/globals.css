@@ -29,6 +29,7 @@
 
 /* ── Theme ── */
 @theme {
+  --breakpoint-xs: 480px;
   --color-orchid: #631D76;
   --color-orchid-light: #7a3490;
   --color-orchid-dark: #4a1559;

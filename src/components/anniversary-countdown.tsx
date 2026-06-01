@@ -39,7 +39,7 @@ function FlipDigit({ digit, index }: { digit: string; index: number }) {
     <div className="relative" style={{ perspective: "500px" }}>
       {/* Glassmorphic card */}
       <div
-        className="relative flex h-[72px] w-[48px] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] shadow-lg shadow-orchid/5 backdrop-blur-md sm:h-[96px] sm:w-[64px] md:h-[110px] md:w-[74px]"
+        className="relative flex h-[52px] w-[34px] items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-white/[0.03] shadow-lg shadow-orchid/5 backdrop-blur-md xs:h-[66px] xs:w-[44px] sm:h-[75px] sm:w-[50px] md:h-[95px] md:w-[64px]"
       >
         {/* Subtle gradient shimmer overlay */}
         <div
@@ -66,7 +66,7 @@ function FlipDigit({ digit, index }: { digit: string; index: number }) {
               duration: 0.45,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            className="relative z-10 font-display text-3xl font-bold tracking-tight text-plum drop-shadow-[0_0_12px_rgba(255,170,234,0.3)] sm:text-4xl md:text-5xl"
+            className="relative z-10 font-display text-xl font-bold tracking-tight text-plum drop-shadow-[0_0_12px_rgba(255,170,234,0.3)] xs:text-2xl sm:text-3xl md:text-4xl"
           >
             {digit}
           </motion.span>
@@ -94,14 +94,14 @@ function DigitGroup({
   const digits = padTwo(value).split("");
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="flex gap-1.5 sm:gap-2">
+    <div className="flex flex-col items-center gap-1.5 sm:gap-2">
+      <div className="flex gap-1 sm:gap-1 md:gap-1.5">
         {digits.map((d, i) => (
           <FlipDigit key={`${label}-${i}`} digit={d} index={startIndex + i} />
         ))}
       </div>
       <span
-        className="text-[10px] font-medium uppercase tracking-[0.2em] text-plum/50 sm:text-xs"
+        className="text-[9px] font-medium uppercase tracking-[0.1em] text-plum/50 xs:tracking-[0.15em] sm:text-xs sm:tracking-[0.2em]"
       >
         {label}
       </span>
@@ -112,14 +112,14 @@ function DigitGroup({
 /* ─── Colon Separator ─── */
 function ColonSeparator() {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 pb-5 sm:gap-3">
+    <div className="flex flex-col items-center justify-center gap-1.5 pb-4 sm:gap-3 sm:pb-5">
       <motion.div
-        className="h-1.5 w-1.5 rounded-full bg-plum/40 sm:h-2 sm:w-2"
+        className="h-1 w-1 rounded-full bg-plum/40 sm:h-1.5 sm:w-1.5 md:h-2 md:w-2"
         animate={{ opacity: [0.3, 0.8, 0.3] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="h-1.5 w-1.5 rounded-full bg-plum/40 sm:h-2 sm:w-2"
+        className="h-1 w-1 rounded-full bg-plum/40 sm:h-1.5 sm:w-1.5 md:h-2 md:w-2"
         animate={{ opacity: [0.3, 0.8, 0.3] }}
         transition={{
           duration: 1.5,
@@ -169,7 +169,7 @@ export function AnniversaryCountdown() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] p-6 backdrop-blur-sm sm:p-10 md:p-12"
+        className="relative mx-auto max-w-3xl overflow-hidden rounded-3xl border border-white/5 bg-white/[0.02] p-4 backdrop-blur-sm xs:p-6 sm:p-8 md:p-8"
       >
         {/* Background ambient glow */}
         <div
@@ -200,7 +200,7 @@ export function AnniversaryCountdown() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="relative flex items-center justify-center gap-2 sm:gap-4"
+          className="relative flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-3 md:gap-3.5"
         >
           <DigitGroup value={timeLeft.days} label="Days" startIndex={0} />
           <ColonSeparator />

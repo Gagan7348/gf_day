@@ -686,7 +686,7 @@ export default function Home() {
 
       {/* """"""""""" ANNIVERSARY COUNTDOWN """"""""""" */}
       <section className="relative px-4 py-16 sm:px-6 sm:py-20">
-        <div className="mx-auto max-w-2xl">
+        <div className="mx-auto max-w-3xl">
           <AnniversaryCountdown />
         </div>
       </section>

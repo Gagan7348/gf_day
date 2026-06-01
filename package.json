@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node -e \"require('fs').writeFileSync('docs/.nojekyll', '')\"",
     "start": "next start",
     "lint": "next lint"
   },
